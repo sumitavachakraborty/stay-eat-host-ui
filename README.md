@@ -1,4 +1,4 @@
-# se-host-frontend
+# stay-eat-host-ui
 
 stay and eat **host** web app — the dashboard and listing management experience for stay and eat homestay hosts.
 
@@ -129,10 +129,10 @@ All design decisions are in `src/styles/tokens.css` — ported verbatim from the
 docker build \
   --build-arg VITE_API_URL=https://api.yourdomain.com/api/v1 \
   --build-arg VITE_TRAVELLER_APP_URL=https://yourdomain.com \
-  -t se-host-frontend .
+  -t stay-eat-host-ui .
 
 # Run
-docker run -p 8080:80 se-host-frontend
+docker run -p 8080:80 stay-eat-host-ui
 ```
 
 The Dockerfile is multi-stage: Node 20 Alpine builds the Vite bundle, then Nginx Alpine serves it with SPA fallback routing and aggressive asset caching.
