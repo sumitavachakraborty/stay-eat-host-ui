@@ -17,7 +17,7 @@ export default function QualityQueue({ checks = [] }) {
   return (
     <div>
       {/* Tab pills */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 18 }}>
+      <div style={{ display: 'flex', gap: 8, marginBottom: 18, flexWrap: 'wrap' }}>
         {tabs.map(([id, label]) => (
           <button
             key={id}
@@ -34,27 +34,22 @@ export default function QualityQueue({ checks = [] }) {
       {tab === 'queue' && (
         <div style={{ display: 'grid', gap: 14 }}>
           {checks.map((b, i) => (
-            <div key={b.id || i} style={{
-              border: '1px solid var(--c-hairline)',
-              borderRadius: 18,
-              padding: 18,
-              display: 'grid',
-              gridTemplateColumns: '120px 1fr auto',
-              gap: 18,
-              alignItems: 'center',
-            }}>
+            <div key={b.id || i} className="qqueue-row">
               {/* Thumbnail */}
-              <div style={{
-                height: 90,
-                borderRadius: 12,
-                background: b.property?.photos?.[0]
-                  ? `url(${b.property.photos[0]}) center/cover`
-                  : 'var(--c-stone)',
-              }} />
+              <div
+                className="qqueue-row-thumb"
+                style={{
+                  height: 90,
+                  borderRadius: 12,
+                  background: b.property?.photos?.[0]
+                    ? `url(${b.property.photos[0]}) center/cover`
+                    : 'var(--c-stone)',
+                }}
+              />
 
               {/* Info */}
               <div>
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 4 }}>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 4, flexWrap: 'wrap' }}>
                   <div style={{ fontWeight: 600 }}>{b.property?.name || 'Property'}</div>
                   <span className={`status ${b.state === 'progress' ? 'pending' : 'draft'}`}>
                     <span className="dot" />
@@ -77,7 +72,7 @@ export default function QualityQueue({ checks = [] }) {
                     background: 'var(--c-border-light)',
                     borderRadius: 2,
                     marginTop: 10,
-                    width: 240,
+                    maxWidth: 240,
                   }}>
                     <div style={{
                       height: '100%',
@@ -90,14 +85,16 @@ export default function QualityQueue({ checks = [] }) {
               </div>
 
               {/* Action */}
-              <Link to={`/quality-check/${b.id || 'qc1'}`} style={{ textDecoration: 'none' }}>
-                <button
-                  className={i === 0 ? 'btn-primary' : 'pill-outline'}
-                  style={{ padding: '10px 18px', fontSize: 13 }}
-                >
-                  {i === 0 ? 'Continue →' : 'Open'}
-                </button>
-              </Link>
+              <div className="qqueue-row-action">
+                <Link to={`/quality-check/${b.id || 'qc1'}`} style={{ textDecoration: 'none' }}>
+                  <button
+                    className={i === 0 ? 'btn-primary' : 'pill-outline'}
+                    style={{ padding: '10px 18px', fontSize: 13 }}
+                  >
+                    {i === 0 ? 'Continue →' : 'Open'}
+                  </button>
+                </Link>
+              </div>
             </div>
           ))}
         </div>

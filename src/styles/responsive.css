@@ -1,0 +1,483 @@
+/* ============================================================
+   stay and eat — HOST responsive layer
+   Breakpoints: ≤1024 tablet, ≤768 mobile, ≤480 small
+   Does NOT override colors, fonts, radii, or visual style —
+   only adds layout / spacing / sizing adjustments.
+   ============================================================ */
+
+/* Global: prevent horizontal overflow at any breakpoint */
+html, body, #root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---- HostHeader ------------------------------------------ */
+.host-header {
+  padding: 20px 56px;
+  border-bottom: 1px solid var(--c-hairline);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 16px;
+}
+
+.host-header-brand {
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--c-near-black);
+  white-space: nowrap;
+}
+
+/* Nav tabs — desktop: flex row */
+.host-header-nav {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.host-header-tab {
+  color: var(--c-slate);
+  font-weight: 400;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  text-decoration: none;
+  transition: color .15s;
+  white-space: nowrap;
+}
+
+.host-header-tab.active {
+  color: var(--c-near-black);
+  font-weight: 600;
+  border-bottom-color: var(--c-near-black);
+}
+
+.host-header-right {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* "New listing" label hidden on mobile; shown on desktop */
+.host-new-listing-label {
+  display: inline;
+}
+
+/* ---- Dashboard layout ------------------------------------ */
+.dashboard-greeting {
+  padding: 36px 56px 0;
+}
+
+.dashboard-greeting h1,
+.dashboard-greeting-h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.dashboard-stat-grid {
+  padding: 32px 56px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.dashboard-main {
+  padding: 40px 56px 56px;
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 48px;
+}
+
+.dashboard-rewards-col > div {
+  position: sticky;
+  top: 24px;
+}
+
+.dashboard-listings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* ---- QualityCheck layout --------------------------------- */
+.qc-subnav {
+  padding: 20px 56px;
+  border-bottom: 1px solid var(--c-hairline);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qc-main {
+  padding: 40px 56px;
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 56px;
+}
+
+.qc-side-panel {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+/* Progress band — desktop: flex row */
+.qc-progress-band {
+  margin-top: 28px;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--c-near-black);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.qc-progress-band-info {
+  flex-shrink: 0;
+}
+
+.qc-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,.15);
+  border-radius: 3px;
+}
+
+.qc-submit-btn {
+  flex-shrink: 0;
+}
+
+/* ---- Quality queue rows ---------------------------------- */
+.qqueue-row {
+  border: 1px solid var(--c-hairline);
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+
+/* ---- ChecklistItem --------------------------------------- */
+.checklist-item {
+  border: 1px solid var(--c-hairline);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.checklist-item-upload {
+  flex-shrink: 0;
+}
+
+/* ---- NewListing ------------------------------------------ */
+.new-listing-counters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.new-listing-submit-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.new-listing-submit-btn {
+  background: var(--c-near-black);
+  color: #fff;
+  border: 0;
+  border-radius: var(--r-pill);
+  padding: 16px 32px;
+  font: 500 15px/1 var(--f-body);
+  cursor: pointer;
+  transition: opacity .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.new-listing-price-field {
+  max-width: 200px;
+}
+
+/* ============================================================
+   TABLET  ≤ 1024px
+   ============================================================ */
+@media (max-width: 1024px) {
+  .host-header {
+    padding: 16px 32px;
+  }
+
+  .dashboard-greeting {
+    padding: 28px 32px 0;
+  }
+
+  .dashboard-stat-grid {
+    padding: 24px 32px 0;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-main {
+    padding: 32px 32px 48px;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+  }
+
+  .qc-subnav {
+    padding: 16px 32px;
+  }
+
+  .qc-main {
+    padding: 32px 32px 48px;
+    gap: 32px;
+  }
+}
+
+/* ============================================================
+   MOBILE  ≤ 768px
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Header */
+  .host-header {
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .host-header-brand {
+    font-size: 18px;
+  }
+
+  /* Nav tabs: horizontal scroll row below brand */
+  .host-header-nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 10px 0 2px;
+    border-top: 1px solid var(--c-hairline);
+    margin-top: 10px;
+    gap: 4px;
+  }
+
+  .host-header-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .host-header-tab {
+    padding: 8px 14px;
+    border-bottom: none;
+    border-radius: 999px;
+    white-space: nowrap;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .host-header-tab.active {
+    background: var(--c-near-black);
+    color: #fff;
+    border-bottom: none;
+  }
+
+  /* Right cluster: toggle + icon + avatar */
+  .host-header-right {
+    gap: 10px;
+  }
+
+  /* Ensure tap targets ≥44px on toggle buttons */
+  .mode-toggle-btn {
+    min-height: 44px;
+    padding: 8px 14px;
+  }
+
+  /* "New listing" label hidden; only + icon shown */
+  .host-new-listing-label {
+    display: none;
+  }
+
+  /* Dashboard */
+  .dashboard-greeting {
+    padding: 24px 20px 0;
+  }
+
+  .dashboard-greeting h1 {
+    font-size: clamp(32px, 9vw, 64px);
+  }
+
+  .dashboard-stat-grid {
+    padding: 20px 20px 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .dashboard-main {
+    padding: 28px 20px 40px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Rewards rail: non-sticky, full-width, below queue */
+  .dashboard-rewards-col > div {
+    position: static;
+  }
+
+  /* Listings grid: 1 col */
+  .dashboard-listings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* QC page */
+  .qc-subnav {
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .qc-main {
+    padding: 28px 20px 40px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Side panel: non-sticky, stacks below */
+  .qc-side-panel {
+    position: static;
+  }
+}
+
+/* ============================================================
+   SMALL  ≤ 480px
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Header */
+  .host-header {
+    padding: 12px 16px;
+  }
+
+  .host-header-brand {
+    font-size: 16px;
+  }
+
+  /* Dashboard */
+  .dashboard-greeting {
+    padding: 20px 16px 0;
+  }
+
+  .dashboard-stat-grid {
+    padding: 16px 16px 0;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .dashboard-main {
+    padding: 20px 16px 32px;
+  }
+
+  /* Quality queue rows: stack image / content / button */
+  .qqueue-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .qqueue-row-thumb {
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+  }
+
+  .qqueue-row-action {
+    width: 100%;
+  }
+
+  .qqueue-row-action button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* QC page */
+  .qc-subnav {
+    padding: 12px 16px;
+  }
+
+  .qc-main {
+    padding: 16px 16px 32px;
+  }
+
+  /* Progress band: stack vertically */
+  .qc-progress-band {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .qc-progress-bar {
+    width: 100%;
+    flex: none;
+    order: 2;
+  }
+
+  .qc-submit-btn {
+    width: 100%;
+    order: 3;
+  }
+
+  .qc-submit-btn button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ChecklistItem: allow upload button to wrap */
+  .checklist-item {
+    flex-wrap: wrap;
+  }
+
+  .checklist-item-upload {
+    width: 100%;
+  }
+
+  .checklist-item-upload button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* NewListing */
+  .new-listing-counters {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .new-listing-submit-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .new-listing-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .new-listing-price-field {
+    max-width: 100%;
+  }
+
+  /* NewListing page outer padding */
+  .new-listing-page-inner {
+    padding: 28px 16px 60px;
+  }
+}

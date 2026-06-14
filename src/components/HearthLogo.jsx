@@ -1,4 +1,4 @@
-// Hearth wordmark — used in the host header.
+// HearthLogo wordmark — used in the host header.
 // Renders as an inline SVG logotype in Space Grotesk display style.
 
 export default function HearthLogo({ inverted = false }) {
@@ -7,13 +7,13 @@ export default function HearthLogo({ inverted = false }) {
       style={{
         fontFamily: 'var(--f-display)',
         fontSize: 22,
-        fontWeight: 400,
+        fontWeight: 500,
         letterSpacing: '-0.02em',
         color: inverted ? '#fff' : 'var(--c-near-black)',
         userSelect: 'none',
       }}
     >
-      hearth
+      stay and eat
     </span>
   );
 }

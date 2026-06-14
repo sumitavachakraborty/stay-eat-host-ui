@@ -1,5 +1,5 @@
 // HostHeader — sticky top nav for the host app.
-// Contains: brand "hearth · host", nav tabs, host/traveller mode toggle, avatar, New listing btn.
+// Contains: brand "stay and eat · host", nav tabs, host/traveller mode toggle, avatar, New listing btn.
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Icon from './Icon.jsx';
@@ -22,26 +22,16 @@ export default function HostHeader() {
   }
 
   return (
-    <header style={{
-      padding: '20px 56px',
-      borderBottom: '1px solid var(--c-hairline)',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      background: '#fff',
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-    }}>
+    <header className="host-header">
       {/* Brand */}
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <span style={{ fontFamily: 'var(--f-display)', fontSize: 22, letterSpacing: '-0.02em', color: 'var(--c-near-black)' }}>
-          hearth · host
+      <Link to="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
+        <span className="host-header-brand">
+          stay and eat · host
         </span>
       </Link>
 
-      {/* Nav tabs */}
-      <nav style={{ display: 'flex', gap: 24, fontSize: 14 }}>
+      {/* Nav tabs — horizontal scroll on mobile */}
+      <nav className="host-header-nav">
         {NAV_TABS.map((tab) => {
           const isActive = activeTab === tab;
           const to = tab === 'Today' ? '/' : `/${tab.toLowerCase()}`;
@@ -49,14 +39,7 @@ export default function HostHeader() {
             <Link
               key={tab}
               to={to}
-              style={{
-                color: isActive ? 'var(--c-near-black)' : 'var(--c-slate)',
-                fontWeight: isActive ? 600 : 400,
-                borderBottom: isActive ? '2px solid var(--c-near-black)' : '2px solid transparent',
-                paddingBottom: 4,
-                textDecoration: 'none',
-                transition: 'color .15s',
-              }}
+              className={`host-header-tab${isActive ? ' active' : ''}`}
             >
               {tab}
             </Link>
@@ -65,8 +48,8 @@ export default function HostHeader() {
       </nav>
 
       {/* Right cluster */}
-      <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-        {/* Host / Traveller toggle */}
+      <div className="host-header-right">
+        {/* Host / Traveller toggle — always visible */}
         <div className="mode-toggle">
           <button className="mode-toggle-btn" onClick={switchToTraveller}>
             Traveller
@@ -76,10 +59,11 @@ export default function HostHeader() {
           </button>
         </div>
 
-        {/* New listing */}
+        {/* New listing — full text on desktop, + icon on mobile */}
         <Link to="/new-listing" style={{ textDecoration: 'none' }}>
-          <button className="btn-primary" style={{ padding: '10px 16px', fontSize: 13 }}>
-            <Icon.Plus size={14} /> New listing
+          <button className="btn-primary host-new-listing-btn" style={{ padding: '10px 16px', fontSize: 13 }}>
+            <Icon.Plus size={14} />
+            <span className="host-new-listing-label">New listing</span>
           </button>
         </Link>
 
@@ -96,6 +80,7 @@ export default function HostHeader() {
           fontSize: 14,
           cursor: 'pointer',
           flexShrink: 0,
+          minWidth: 36,
         }}>
           M
         </div>

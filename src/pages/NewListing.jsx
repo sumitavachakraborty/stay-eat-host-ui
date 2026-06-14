@@ -128,7 +128,7 @@ export default function NewListing() {
 
         {/* Heading */}
         <div className="mono" style={{ marginBottom: 12 }}>New listing</div>
-        <h1 className="display" style={{ fontSize: 52, lineHeight: 1, margin: '0 0 8px', letterSpacing: '-0.03em' }}>
+        <h1 className="display" style={{ fontSize: 'clamp(32px, 8vw, 52px)', lineHeight: 1, margin: '0 0 8px', letterSpacing: '-0.03em' }}>
           Host a place.
         </h1>
         <p style={{ fontSize: 16, color: 'var(--c-slate)', margin: '0 0 40px', lineHeight: 1.5 }}>
@@ -206,7 +206,7 @@ export default function NewListing() {
           </div>
 
           {/* Price */}
-          <div className="form-field" style={{ maxWidth: 200 }}>
+          <div className="form-field new-listing-price-field">
             <label>Price per night (USD)</label>
             <div style={{ position: 'relative' }}>
               <span style={{
@@ -231,7 +231,7 @@ export default function NewListing() {
           </div>
 
           {/* Counters */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          <div className="new-listing-counters">
             <Counter label="Bedrooms" value={form.bedrooms} onChange={(v) => setField('bedrooms', v)} />
             <Counter label="Beds" value={form.beds} onChange={(v) => setField('beds', v)} />
             <Counter label="Bathrooms" value={form.baths} onChange={(v) => setField('baths', v)} />
@@ -289,23 +289,14 @@ export default function NewListing() {
           <hr className="hr" />
 
           {/* Submit */}
-          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+          <div className="new-listing-submit-row">
             <button
               type="submit"
               disabled={loading}
+              className="new-listing-submit-btn"
               style={{
-                background: 'var(--c-near-black)',
-                color: '#fff',
-                border: 0,
-                borderRadius: 'var(--r-pill)',
-                padding: '16px 32px',
-                font: '500 15px/1 var(--f-body)',
-                cursor: loading ? 'not-allowed' : 'pointer',
                 opacity: loading ? 0.7 : 1,
-                transition: 'opacity .2s',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
+                cursor: loading ? 'not-allowed' : 'pointer',
               }}
             >
               {loading ? 'Publishing…' : 'Publish listing'}

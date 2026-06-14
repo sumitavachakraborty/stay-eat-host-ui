@@ -156,7 +156,7 @@ export const FALLBACK_REWARDS = [
   { tier: 'Verified', met: true, desc: 'Photo Quality Checks on every booking', count: '92 / 92' },
   { tier: 'Verified+', met: true, desc: '4.9★ for 6 months · sub-2hr response', count: '4.97 ★' },
   { tier: 'Sustainer', met: false, desc: 'Reviewed by 200 guests', count: '142 / 200' },
-  { tier: 'Hearth Circle', met: false, desc: 'Top 1% in your region', count: '— locked' },
+  { tier: 'stay and eat Circle', met: false, desc: 'Top 1% in your region', count: '— locked' },
 ];
 
 export const FALLBACK_QUALITY_CHECKS = [

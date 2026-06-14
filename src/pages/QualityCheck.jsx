@@ -33,14 +33,8 @@ export default function QualityCheck() {
   return (
     <div className="app fade-in" style={{ minHeight: '100vh' }}>
       {/* Sub-nav */}
-      <div style={{
-        padding: '20px 56px',
-        borderBottom: '1px solid var(--c-hairline)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <div className="qc-subnav">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
           <Link
             to="/"
             className="btn-secondary"
@@ -57,11 +51,11 @@ export default function QualityCheck() {
       </div>
 
       {/* Main layout */}
-      <div style={{ padding: '40px 56px', display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 56 }}>
+      <div className="qc-main">
         {/* Left: form + checklist */}
         <div>
           <div className="mono" style={{ marginBottom: 12 }}>Step 02 · Photograph & submit</div>
-          <h1 className="display" style={{ fontSize: 64, lineHeight: 1, margin: 0, letterSpacing: '-0.03em' }}>
+          <h1 className="display" style={{ fontSize: 'clamp(32px, 5vw, 64px)', lineHeight: 1, margin: 0, letterSpacing: '-0.03em' }}>
             Show {qc.guest?.split(' ')[0] || 'Eli'} the cabin<br />is ready for them.
           </h1>
           <p style={{ marginTop: 18, fontSize: 16, color: 'var(--c-slate)', maxWidth: 520, lineHeight: 1.5 }}>
@@ -70,18 +64,8 @@ export default function QualityCheck() {
           </p>
 
           {/* Progress band */}
-          <div style={{
-            marginTop: 28,
-            padding: 20,
-            borderRadius: 16,
-            background: 'var(--c-near-black)',
-            color: '#fff',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 24,
-          }}>
-            <div style={{ flexShrink: 0 }}>
+          <div className="qc-progress-band">
+            <div className="qc-progress-band-info">
               <div style={{
                 fontSize: 12,
                 color: 'rgba(255,255,255,.6)',
@@ -93,7 +77,7 @@ export default function QualityCheck() {
               </div>
               <div style={{ fontSize: 28, fontWeight: 500, marginTop: 4 }}>{pct}%</div>
             </div>
-            <div style={{ flex: 1, height: 6, background: 'rgba(255,255,255,.15)', borderRadius: 3 }}>
+            <div className="qc-progress-bar">
               <div style={{
                 width: `${pct}%`,
                 height: '100%',
@@ -102,9 +86,11 @@ export default function QualityCheck() {
                 transition: 'width .6s',
               }} />
             </div>
-            <button className="btn-primary invert" style={{ flexShrink: 0 }}>
-              Submit to {qc.guest?.split(' ')[0] || 'Eli'} →
-            </button>
+            <div className="qc-submit-btn">
+              <button className="btn-primary invert">
+                Submit to {qc.guest?.split(' ')[0] || 'Eli'} →
+              </button>
+            </div>
           </div>
 
           {/* Room checklist */}
@@ -117,7 +103,7 @@ export default function QualityCheck() {
 
         {/* Right: side panel */}
         <div>
-          <div style={{ position: 'sticky', top: 24, display: 'grid', gap: 16 }}>
+          <div className="qc-side-panel">
             {/* Guest preview card */}
             <div style={{ border: '1px solid var(--c-hairline)', borderRadius: 22, padding: 20 }}>
               <div className="mono" style={{ marginBottom: 14 }}>Guest preview</div>

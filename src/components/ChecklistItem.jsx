@@ -8,15 +8,10 @@ export default function ChecklistItem({ r }) {
   const isDone = r.count >= r.required;
 
   return (
-    <div style={{
-      border: '1px solid var(--c-hairline)',
-      borderRadius: 16,
-      padding: 16,
-      display: 'flex',
-      gap: 16,
-      alignItems: 'center',
-      background: isDone ? '#fff' : '#fffaf7',
-    }}>
+    <div
+      className="checklist-item"
+      style={{ background: isDone ? '#fff' : '#fffaf7' }}
+    >
       {/* Photo thumb */}
       <div style={{
         width: 84,
@@ -42,12 +37,14 @@ export default function ChecklistItem({ r }) {
       </div>
 
       {/* Info */}
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           marginBottom: 6,
+          flexWrap: 'wrap',
+          gap: 6,
         }}>
           <div style={{ fontSize: 16, fontWeight: 500 }}>{r.name}</div>
           <span className={`status ${r.status === 'verified' ? 'live' : r.status === 'pending' ? 'pending' : 'draft'}`}>
@@ -72,9 +69,11 @@ export default function ChecklistItem({ r }) {
       </div>
 
       {/* Upload / Add more */}
-      <button className="pill-outline" style={{ borderColor: 'var(--c-hairline)', flexShrink: 0 }}>
-        {r.count > 0 ? 'Add more' : 'Upload'}
-      </button>
+      <div className="checklist-item-upload">
+        <button className="pill-outline" style={{ borderColor: 'var(--c-hairline)' }}>
+          {r.count > 0 ? 'Add more' : 'Upload'}
+        </button>
+      </div>
     </div>
   );
 }

@@ -44,21 +44,16 @@ export default function HostDashboard() {
   return (
     <div className="app fade-in" style={{ minHeight: '100vh' }}>
       {/* Hero greeting */}
-      <div style={{ padding: '36px 56px 0' }}>
+      <div className="dashboard-greeting">
         <div className="mono" style={{ marginBottom: 12 }}>Tuesday, March 22 · Boulder, CO</div>
-        <h1 className="display" style={{ fontSize: 64, lineHeight: 1, margin: 0, letterSpacing: '-0.03em' }}>
+        <h1 className="display dashboard-greeting-h1" style={{ margin: 0, letterSpacing: '-0.03em' }}>
           Good morning, Mara.<br />
           <em style={{ fontStyle: 'normal', color: 'var(--c-slate)' }}>3 stays starting tomorrow.</em>
         </h1>
       </div>
 
       {/* Stat cards */}
-      <div style={{
-        padding: '32px 56px 0',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 16,
-      }}>
+      <div className="dashboard-stat-grid">
         <StatCard
           label="Confirmed bookings"
           value={String(stats.confirmedBookings)}
@@ -86,12 +81,7 @@ export default function HostDashboard() {
       </div>
 
       {/* Main content: queue + rewards */}
-      <div style={{
-        padding: '40px 56px 56px',
-        display: 'grid',
-        gridTemplateColumns: '1.7fr 1fr',
-        gap: 48,
-      }}>
+      <div className="dashboard-main">
         {/* Left: Quality Check queue + Listings */}
         <div>
           <QualityQueue checks={displayChecks} />
@@ -103,13 +93,15 @@ export default function HostDashboard() {
               justifyContent: 'space-between',
               alignItems: 'baseline',
               marginBottom: 16,
+              flexWrap: 'wrap',
+              gap: 8,
             }}>
               <h2 className="display" style={{ fontSize: 32, margin: 0, letterSpacing: '-0.02em' }}>
                 Your listings
               </h2>
               <button className="btn-secondary">Manage all {displayListings.length}</button>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
+            <div className="dashboard-listings-grid">
               {displayListings.slice(0, 4).map((p) => (
                 <div key={p.id} style={{
                   border: '1px solid var(--c-hairline)',
@@ -158,8 +150,8 @@ export default function HostDashboard() {
         </div>
 
         {/* Right: Rewards + Review */}
-        <div>
-          <div style={{ position: 'sticky', top: 24 }}>
+        <div className="dashboard-rewards-col">
+          <div>
             <RewardsRail
               rewards={rewards}
               points={rewardsPoints}

@@ -35,7 +35,7 @@ export default function RewardsRail({ rewards, points = 2148, delta = '+328 vs l
           <span style={{ color: 'var(--c-coral)' }}>{points.toLocaleString()}</span>
         </div>
         <div style={{ fontSize: 13, color: 'rgba(255,255,255,.7)', position: 'relative' }}>
-          Hearth points earned · {delta}
+          stay and eat points earned · {delta}
         </div>
 
         <div style={{ marginTop: 18, position: 'relative' }}>
