@@ -1,4 +1,4 @@
-// API client for Hearth host endpoints
+// API client for stay and eat host endpoints
 // Falls back to static data when backend is unavailable or token is missing.
 
 import {
@@ -9,7 +9,7 @@ import {
 } from './fallbackData.js';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api/v1';
-const TOKEN_KEY = 'hearth_token';
+const TOKEN_KEY = 'se_token';
 
 // ── Auth helpers ─────────────────────────────────────────────────────────────
 

@@ -1,6 +1,6 @@
 # se-host-frontend
 
-Hearth **host** web app — the dashboard and listing management experience for Hearth homestay hosts.
+stay and eat **host** web app — the dashboard and listing management experience for stay and eat homestay hosts.
 
 Built with Vite + React 18. Runs on port **3002**.
 
@@ -76,7 +76,7 @@ The dashboard (`/`) shows four stat cards pulled from `GET /host/analytics`:
 
 If the API is unavailable or the user has no token, all four cards fall back to bundled static values from `src/lib/fallbackData.js` — the UI always renders.
 
-The **Rewards rail** (right column) shows Hearth points earned, tier progression (Verified / Verified+ / Sustainer / Hearth Circle), and the most recent guest review. Same resilience pattern.
+The **Rewards rail** (right column) shows stay and eat points earned, tier progression (Verified / Verified+ / Sustainer / stay and eat Circle), and the most recent guest review. Same resilience pattern.
 
 ---
 
@@ -105,7 +105,7 @@ Fields:
 - Bedrooms / Beds / Bathrooms counters
 - Photo URL inputs (add / remove rows)
 
-On submit: `POST /host/listings` with `Authorization: Bearer <token>` from `localStorage.getItem('hearth_token')`.
+On submit: `POST /host/listings` with `Authorization: Bearer <token>` from `localStorage.getItem('se_token')`.
 
 On success → navigate to `/`. If the API is unreachable (no backend during dev), the form still navigates home so the demo flow works.
 
@@ -113,7 +113,7 @@ On success → navigate to `/`. If the API is unreachable (no backend during dev
 
 ## Design tokens
 
-All design decisions are in `src/styles/tokens.css` — ported verbatim from the Hearth design system:
+All design decisions are in `src/styles/tokens.css` — ported verbatim from the stay and eat design system:
 
 - Colors: `--c-coral`, `--c-near-black`, `--c-deep-green`, `--c-pale-green`, etc.
 - Typography: Space Grotesk (display), DM Sans (body), JetBrains Mono (mono labels)
@@ -129,10 +129,10 @@ All design decisions are in `src/styles/tokens.css` — ported verbatim from the
 docker build \
   --build-arg VITE_API_URL=https://api.yourdomain.com/api/v1 \
   --build-arg VITE_TRAVELLER_APP_URL=https://yourdomain.com \
-  -t hearth-host-web .
+  -t se-host-frontend .
 
 # Run
-docker run -p 8080:80 hearth-host-web
+docker run -p 8080:80 se-host-frontend
 ```
 
 The Dockerfile is multi-stage: Node 20 Alpine builds the Vite bundle, then Nginx Alpine serves it with SPA fallback routing and aggressive asset caching.
